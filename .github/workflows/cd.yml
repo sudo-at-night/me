@@ -47,11 +47,11 @@ jobs:
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
       - name: Prepare Stack Up
         run: |
-          go get -u github.com/pressly/sup/cmd/sup
+          go get github.com/pressly/sup/cmd/sup
           export SSH_USER=${{ secrets.SSH_USER }}
           export SSH_HOST=${{ secrets.SSH_HOST }}
           envsubst < sup/Supfile.template.yml > sup/Supfile.yml
-          ssh-add
-      - name: Cleanup and deployment
+      - name: Deploy
         run: |
+          ssh-add
           sup -f sup/Supfile.yml production deploy
