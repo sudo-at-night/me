@@ -1,0 +1,18 @@
+networks:
+    production:
+        hosts:
+            - ${SSH_USER}@${SSH_HOST}
+commands:
+    cleanup:
+        desc: Clear server's static files
+        run: if [ -d ".cdocker/vlm/me" ] ; then rm -rf .cdocker/vlm/me ; fi
+    upload:
+        desc: Upload built files
+        upload:
+            - src: ./dist
+              dst: .cdocker/vlm
+        run: mv .cdocker/vlm/dist .cdocker/vlm/me
+targets:
+    deploy:
+        - cleanup
+        - upload

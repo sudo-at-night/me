@@ -29,6 +29,11 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+      - name: Setup Go
+        uses: actions/setup-go@v1
+        with:
+          go-version: '1.13.6'
       - name: Download pre-built static files
         uses: actions/download-artifact@v1
         with:
@@ -40,10 +45,13 @@ jobs:
       - name: Add remote host to known_hosts
         run: |
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-      - name: Clear server's static assets
+      - name: Prepare Stack Up
         run: |
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "if [ -d "~/.cdocker/vlm/me" ] ; then rm -rf ~/.cdocker/vlm/me ; fi"
-      - name: Upload built static files
+          go get -u github.com/pressly/sup/cmd/sup
+          export SSH_USER=${{ secrets.SSH_USER }}
+          export SSH_HOST=${{ secrets.SSH_HOST }}
+          envsubst < sup/Supfile.template.yml > sup/Supfile.yml
+          ssh-add
+      - name: Cleanup and deployment
         run: |
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "mkdir -p ~/.cdocker/vlm/me"
-          scp dist/* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/web/.cdocker/vlm/me/
+          sup -f sup/Supfile.yml production deploy
