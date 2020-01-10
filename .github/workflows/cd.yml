@@ -53,4 +53,4 @@ jobs:
           envsubst < sup/Supfile.template.yml > sup/Supfile.yml
       - name: Deploy
         run: |
-          sup -f sup/Supfile.yml production deploy
+          $GOPATH/bin/sup -f sup/Supfile.yml production deploy
