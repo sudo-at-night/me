@@ -53,6 +53,5 @@ jobs:
           envsubst < sup/Supfile.template.yml > sup/Supfile.yml
       - name: Deploy
         run: |
-          ls -al
           export PATH=$PATH:$(go env GOPATH)/bin
           sup -f sup/Supfile.yml production deploy
