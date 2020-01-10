@@ -1,0 +1,12 @@
+$sizes: ();
+
+@for $i from 1 through 20 {
+    $newSize: ($i: "#{50 * $i + 300}px");
+    $sizes: map-merge($sizes, $newSize);
+}
+
+@mixin from($size) {
+    @media all and (min-width: map-get($sizes, $size)) {
+        @content;
+    }
+}

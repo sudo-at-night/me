@@ -1,0 +1,25 @@
+{
+  "name": "patpist",
+  "version": "1.0.0",
+  "author": "Patryk Mazur <patytmaz@gmail.com>",
+  "description": "My personal github website",
+  "scripts": {
+    "dev": "parcel index.html --no-cache --out-dir ./dist",
+    "build": "parcel build index.html --no-cache --no-source-maps --out-dir ./dist"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "9.7.3",
+    "parcel-bundler": "1.12.4",
+    "postcss-modules": "1.4.1",
+    "sass": "1.23.7"
+  },
+  "dependencies": {
+    "animejs": "3.1.0",
+    "components": "0.1.0",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-router-dom": "^5.1.2",
+    "reset-css": "5.0.1"
+  }
+}

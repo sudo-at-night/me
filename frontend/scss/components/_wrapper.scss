@@ -1,0 +1,7 @@
+.c-wrapper {
+    padding-top: 7rem;
+    
+    @include from(8) {
+        padding-top: 3rem;
+    }
+}

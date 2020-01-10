@@ -1,0 +1,151 @@
+.c-listings {
+    margin: 3rem 0;
+
+    &__title {
+        font-weight: 600;
+        font-size: $fs-header-small;
+        margin-bottom: 1.5rem;
+
+        &:not(:first-child) {
+            margin-top: 2.5rem;
+
+            @include from(5) {
+                margin-top: 2rem;
+            }
+        }
+
+        @include from(5) {
+            font-size: $fs-header-big;
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__listing-card {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+
+        @include from(8) {
+            flex-direction: row;
+        }
+    }
+
+    &__card-column-container {
+        flex: 1;
+
+        &:not(:first-child) {
+            margin-top: 2rem;
+
+            @include from(8) {
+                margin-top: 0;
+            }
+        }
+    }
+
+    &__card-title {
+        font-size: $fs-header-small;
+        font-weight: 600;
+
+        @include from(5) {
+            font-size: $fs-header-medium;
+        }
+    }
+
+    &__card-subtitle {
+        line-height: 1.5;
+        margin-top: 0.7rem;
+        opacity: 0.7;
+        white-space: pre-line;
+    }
+
+    &__skills-list-container {
+        max-width: 90%;
+        margin: -1rem auto 0 auto;
+
+        @include from(5) {
+            @include container;
+        }
+    }
+
+    &__skills-list {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+        @include from(5) {
+            flex-direction: row;
+            margin: 0 -2.5rem;
+        }
+    }
+
+    &__skill-card {
+        position: relative;
+        width: 100%;
+        padding: 5.6rem 1.5rem 1.5rem 1.5rem;
+        margin-top: 3rem;
+
+        @include from(5) {
+            width: 14rem;
+            margin: 1rem;
+        }
+    }
+
+    &__skill-title {
+        font-weight: 600;
+        text-align: center;
+        font-size: $fs-header-big;
+    }
+
+    &__skill-image {
+        object-fit: contain;
+        position: absolute;
+        width: 7rem;
+        height: 7rem;
+        top: -2.2rem;
+        left: 50%;
+        transform: translateX(-50%);
+
+        @include from(5) {
+            left: 1rem;
+            transform: none;
+        }
+    }
+
+    &__networks-list-container {
+        max-width: 90%;
+        @include container;
+
+
+        @include from(5) {
+            @include container;
+        }
+    }
+
+    &__networks-list {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        margin-top: 0;
+        padding-left: 0;
+    }
+
+    &__network-list-item {
+        &:not(:first-child) {
+            margin-left: 2.5rem;
+        }
+    }
+
+    &__network-link {
+        display: inline-block;
+        position: relative;
+        height: 3.3rem;
+        width: 3.3rem;
+    }
+
+    &__network-image {
+        object-fit: contain;
+        position: relative;
+        width: 3.3rem;
+        height: 3.3rem;
+    }
+}
