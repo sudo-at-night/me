@@ -53,5 +53,4 @@ jobs:
           envsubst < sup/Supfile.template.yml > sup/Supfile.yml
       - name: Deploy
         run: |
-          ssh-add
           sup -f sup/Supfile.yml production deploy
