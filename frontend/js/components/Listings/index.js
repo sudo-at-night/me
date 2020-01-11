@@ -1,8 +1,6 @@
 import React from 'react';
 import anime from 'animejs';
-import ListingCardNetwork from './ListingCardNetwork';
-import ListingCardJob from './ListingCardJob';
-import ListingCardSkill from './ListingCardSkill';
+import animationsConfig from '~/js/utils/animations/config';
 import VueLogo from '~/assets/vue.png';
 import ReactLogo from '~/assets/react.png';
 import WebpackLogo from '~/assets/webpack.png';
@@ -10,10 +8,13 @@ import SASSLogo from '~/assets/sass.png';
 import GitHubLogo from '~/assets/github.png';
 import GitLabLogo from '~/assets/gitlab.png';
 import LinkedInLogo from '~/assets/li.png';
+import ListingCardNetwork from './ListingCardNetwork';
+import ListingCardJob from './ListingCardJob';
+import ListingCardSkill from './ListingCardSkill';
 
 export default class Listings extends React.Component {
     componentDidMount() {
-        const easing = 'cubicBezier(0.4, 0.0, 0.2, 1)';
+        const easing = animationsConfig.easing;
         const elementsTitles = document.querySelectorAll('.c-listings__title');
         const elementsNetworkListings = document.querySelectorAll('.c-listings__network-link');
         const elementsJobListings = document.querySelectorAll('.c-listings__listing-card');
@@ -46,6 +47,7 @@ export default class Listings extends React.Component {
         observer.observe(elementsSkillsListings[0]);
         // Networks animation
         anime.set(elementsNetworkListings, {
+            opacity: 0,
             translateX: 50,
         });
         anime({
@@ -58,6 +60,7 @@ export default class Listings extends React.Component {
         });
         // Job listings animation
         anime.set(elementsJobListings, {
+            opacity: 0,
             translateY: 100,
         });
         anime({
@@ -69,6 +72,7 @@ export default class Listings extends React.Component {
             duration: 1000,
         });
         anime.set(elementsSkillsListings, {
+            opacity: 0,
             translateX: 100,
         });
     }
