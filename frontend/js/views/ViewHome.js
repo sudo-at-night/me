@@ -1,13 +1,17 @@
 import React from 'react';
 import Face from '~/assets/face.jpg'
+import { iniAnimations } from '~/js/utils/animations';
 import WidgetLocation from '~/js/components/WidgetLocation';
 import Listings from '~/js/components/Listings';
 
 export default class ViewHome extends React.Component {
+    componentDidMount() {
+        iniAnimations();
+    }
     render() {
         return (
             <div>
-                <header className="c-main-header u-card u-container">
+                <header className="c-main-header u-card u-container" data-animate="main-header">
                     <img className="c-main-header__face" src={Face} alt="Patryk Mazur"/>
                     <div className="c-main-header__text-container">
                         <div className="c-main-header__text-wrapper">

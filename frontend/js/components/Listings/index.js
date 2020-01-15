@@ -1,6 +1,4 @@
 import React from 'react';
-import anime from 'animejs';
-import animationsConfig from '~/js/utils/animations/config';
 import VueLogo from '~/assets/vue.png';
 import ReactLogo from '~/assets/react.png';
 import WebpackLogo from '~/assets/webpack.png';
@@ -13,73 +11,10 @@ import ListingCardJob from './ListingCardJob';
 import ListingCardSkill from './ListingCardSkill';
 
 export default class Listings extends React.Component {
-    componentDidMount() {
-        const easing = animationsConfig.easing;
-        const elementsTitles = document.querySelectorAll('.c-listings__title');
-        const elementsNetworkListings = document.querySelectorAll('.c-listings__network-link');
-        const elementsJobListings = document.querySelectorAll('.c-listings__listing-card');
-        const elementsSkillsListings = document.querySelectorAll('.c-listings__skill-card');
-        // Titles animation
-        anime({
-            targets: elementsTitles,
-            opacity: 1,
-            easing,
-            delay: anime.stagger(600),
-            duration: 1500,
-        });
-        // Skills animation
-        let skillsDelay = 800;
-        const observer = new IntersectionObserver((entries) => {
-            if (!entries[0].isIntersecting) {
-                skillsDelay = 0;
-                return;
-            }
-            observer.disconnect();
-            anime({
-                targets: elementsSkillsListings,
-                opacity: 1,
-                translateX: 0,
-                easing,
-                delay: anime.stagger(600, {start: skillsDelay}),
-                duration: 1000,
-            });
-        });
-        observer.observe(elementsSkillsListings[0]);
-        // Networks animation
-        anime.set(elementsNetworkListings, {
-            opacity: 0,
-            translateX: 50,
-        });
-        anime({
-            targets: elementsNetworkListings,
-            opacity: 1,
-            translateX: 0,
-            easing,
-            delay: anime.stagger(600, {start: 400}),
-            duration: 1000,
-        });
-        // Job listings animation
-        anime.set(elementsJobListings, {
-            opacity: 0,
-            translateY: 100,
-        });
-        anime({
-            targets: elementsJobListings,
-            opacity: 1,
-            translateY: 0,
-            easing,
-            delay: 200,
-            duration: 1000,
-        });
-        anime.set(elementsSkillsListings, {
-            opacity: 0,
-            translateX: 100,
-        });
-    }
     render() {
         return (
             <div className="c-listings">
-                <h3 className="c-listings__title u-hidden u-container">My Network:</h3>
+                <h3 className="c-listings__title u-hidden u-container" data-animate="listings-title">My Network:</h3>
                 <div className="c-listings__networks-list-container">
                     <ul className="c-listings__networks-list">
                         {networks.map((network, index) => (
@@ -92,7 +27,7 @@ export default class Listings extends React.Component {
                         ))}
                     </ul>
                 </div>
-                <h3 className="c-listings__title u-hidden u-container">Currently helping the world of E-Commerce at:</h3>
+                <h3 className="c-listings__title u-hidden u-container" data-animate="listings-title">Currently helping the world of E-Commerce at:</h3>
                 <ul>
                     <li>
                         <ListingCardJob
@@ -102,7 +37,7 @@ export default class Listings extends React.Component {
                             rightSubtitle={DivanteJobDescription}/>
                     </li>
                 </ul>
-                <h3 className="c-listings__title u-hidden u-container">Technologies I use and love:</h3>
+                <h3 className="c-listings__title u-hidden u-container" data-animate="listings-title">Technologies I use and love:</h3>
                 <div className="c-listings__skills-list-container">
                     <ul className="c-listings__skills-list">
                         {skills.map((skill, index) => (
