@@ -22,6 +22,9 @@ export function iniAnimations () {
         duration: 1500,
     });
     // Titles animation
+    anime.set(elementsHeader, {
+        opacity: 0,
+    });
     anime({
         targets: elementsTitles,
         opacity: 1,
