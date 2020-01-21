@@ -1,6 +1,13 @@
 import React from 'react';
 
-export default class ListingCardJob extends React.Component {
+interface IProps {
+    leftTitle:     string,
+    leftSubtitle:  string,
+    rightTitle:    string,
+    rightSubtitle: string,
+};
+
+export default class ListingCardJob extends React.Component<IProps> {
     render() {
         return (
             <div className="c-listings__listing-card u-hidden u-card u-container" data-animate="listings-jobs">

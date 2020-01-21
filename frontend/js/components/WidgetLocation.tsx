@@ -1,6 +1,13 @@
 import React from 'react';
 
-export default class WidgetLocation extends React.Component {
+interface IState {
+    time: string,
+}
+
+export default class WidgetLocation extends React.Component<IState> {
+    state: IState
+    private interval: number
+    
     constructor(props) {
         super(props);
         this.state = { time: getTime() };
@@ -27,7 +34,6 @@ export default class WidgetLocation extends React.Component {
 }
 
 const getTime = () => new Date().toLocaleDateString("en-GB", {
-    hourCycle: 'h24',
     formatMatcher: 'best fit',
     hour: 'numeric',
     minute: '2-digit',

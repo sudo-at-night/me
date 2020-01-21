@@ -1,6 +1,12 @@
 import React from 'react';
 
-export default class ListingCardNetwork extends React.Component {
+interface IProps {
+    href:  string,
+    title: string,
+    image: string,
+};
+
+export default class ListingCardNetwork extends React.Component<IProps> {
     render() {
         return (
             <a className="c-listings__network-link u-hidden" href={this.props.href} title={this.props.title} data-animate="listings-network-links">
