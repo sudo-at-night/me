@@ -4,6 +4,7 @@ import {
     Switch,
     Route,
 } from 'react-router-dom';
+import Footer from '~/js/components/Footer';
 import ViewHome from '~/js/views/ViewHome';
 
 export default class App extends React.Component {
@@ -20,6 +21,7 @@ export default class App extends React.Component {
                         }}/>
                     </Switch>
                 </Router>
+                <Footer></Footer>
             </div>
         );
     }

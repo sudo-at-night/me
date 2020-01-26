@@ -8,6 +8,7 @@ export function iniAnimations () {
     const elementsNetworkListings = document.querySelectorAll('[data-animate="listings-network-links"]');
     const elementsJobListings = document.querySelectorAll('[data-animate="listings-jobs"]');
     const elementsSkillsListings = document.querySelectorAll('[data-animate="listings-skills"]');
+    const elementsFooter = document.querySelectorAll('[data-animate="footer"]');
     // Header animation
     anime.set(elementsHeader, {
         opacity: 0,
@@ -22,7 +23,7 @@ export function iniAnimations () {
         duration: 1500,
     });
     // Titles animation
-    anime.set(elementsHeader, {
+    anime.set(elementsTitles, {
         opacity: 0,
     });
     anime({
@@ -79,5 +80,16 @@ export function iniAnimations () {
     anime.set(elementsSkillsListings, {
         opacity: 0,
         translateX: 100,
+    });
+    // Footer animation
+    anime.set(elementsFooter, {
+        opacity: 0,
+    });
+    anime({
+        targets: elementsFooter,
+        opacity: 1,
+        easing,
+        delay: 200,
+        duration: 1000,
     });
 }

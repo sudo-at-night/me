@@ -14,7 +14,7 @@ export default class Listings extends React.Component {
     render() {
         return (
             <div className="c-listings">
-                <h3 className="c-listings__title u-hidden u-container" data-animate="listings-title">My Network:</h3>
+                <h3 className="c-listings__title u-container" data-animate="listings-title">My Network:</h3>
                 <div className="c-listings__networks-list-container">
                     <ul className="c-listings__networks-list">
                         {networks.map((network, index) => (
@@ -27,7 +27,7 @@ export default class Listings extends React.Component {
                         ))}
                     </ul>
                 </div>
-                <h3 className="c-listings__title u-hidden u-container" data-animate="listings-title">Currently helping the world of E-Commerce at:</h3>
+                <h3 className="c-listings__title u-container" data-animate="listings-title">Currently helping the world of E-Commerce at:</h3>
                 <ul>
                     <li>
                         <ListingCardJob
@@ -37,7 +37,7 @@ export default class Listings extends React.Component {
                             rightSubtitle={DivanteJobDescription}/>
                     </li>
                 </ul>
-                <h3 className="c-listings__title u-hidden u-container" data-animate="listings-title">Technologies I use and love:</h3>
+                <h3 className="c-listings__title u-container" data-animate="listings-title">Technologies I use and love:</h3>
                 <div className="c-listings__skills-list-container">
                     <ul className="c-listings__skills-list">
                         {skills.map((skill, index) => (

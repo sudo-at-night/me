@@ -1,0 +1,9 @@
+.c-footer {
+    padding: 30px 0;
+    text-align: center;
+
+    &__patterns-link {
+        color: $c-link;
+        text-decoration: none;
+    }
+}

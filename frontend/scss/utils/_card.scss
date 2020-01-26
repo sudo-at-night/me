@@ -1,5 +1,5 @@
 .u-card {
-    background-color: $c-background-bland;
+    @include pattern-card;
     border-radius: 0.5rem;
     box-shadow: $s-weak;
 }
