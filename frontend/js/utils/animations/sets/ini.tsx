@@ -4,6 +4,7 @@ import config from '~/js/utils/animations/config';
 export function iniAnimations () {
     const easing = config.easing;
     const elementsHeader = document.querySelectorAll('[data-animate="main-header"]');
+    const elementsBio = document.querySelectorAll('[data-animate="bio"]');
     const elementsTitles = document.querySelectorAll('[data-animate="listings-title"]');
     const elementsNetworkListings = document.querySelectorAll('[data-animate="listings-network-links"]');
     const elementsJobListings = document.querySelectorAll('[data-animate="listings-jobs"]');
@@ -19,7 +20,19 @@ export function iniAnimations () {
         opacity: 1,
         translateY: 0,
         easing,
-        delay: anime.stagger(600),
+        duration: 1500,
+    });
+    // Bio animation
+    anime.set(elementsBio, {
+        opacity: 0,
+        translateY: -50,
+    });
+    anime({
+        targets: elementsBio,
+        opacity: 1,
+        translateY: 0,
+        easing,
+        delay: anime.stagger(0, { start: 500 }),
         duration: 1500,
     });
     // Titles animation

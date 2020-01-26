@@ -1,5 +1,5 @@
 .u-card {
     @include pattern-card;
-    border-radius: 0.5rem;
+    border-radius: $br-default;
     box-shadow: $s-weak;
 }

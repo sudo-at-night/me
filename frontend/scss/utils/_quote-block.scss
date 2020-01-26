@@ -1,0 +1,12 @@
+.u-quote-block {
+    background-color: $c-background-quote;
+    color: $c-text-quote;
+    padding: 2.5rem 1.5rem;
+    border-left: 1px solid $c-border-quote;
+    line-height: 1.5rem;
+
+    strong {
+        color: $c-text-quote-strong;
+        font-weight: bold;
+    }
+}

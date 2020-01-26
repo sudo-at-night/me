@@ -4,7 +4,7 @@ interface IState {
     time: string,
 }
 
-export default class WidgetLocation extends React.Component<IState> {
+export default class WidgetLocation extends React.Component<{}, IState> {
     state: IState
     private interval: number
     
