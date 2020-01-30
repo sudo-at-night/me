@@ -5,13 +5,13 @@ networks:
 commands:
     cleanup:
         desc: Clear server's static files
-        run: if [ -d ".cdocker/vlm/me" ] ; then rm -rf .cdocker/vlm/me/* ; fi
+        run: docker-compose -f .cdocker/compose/me-nginx/compose.yml down && docker volume rm me && docker volume create me && docker-compose -f .cdocker/compose/me-nginx/compose.yml up -d
     upload:
         desc: Upload built files
         upload:
             - src: ./dist
               dst: .cdocker/vlm/me/
-        run: cp -R .cdocker/vlm/me/dist/* .cdocker/vlm/me/ && rm -rf .cdocker/vlm/me/dist
+        run: docker container create --name temp -v me:/data busybox && docker cp .cdocker/vlm/me/dist/. temp:/data/ && docker rm temp
 targets:
     deploy:
         - cleanup
