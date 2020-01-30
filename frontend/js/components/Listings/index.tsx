@@ -14,38 +14,34 @@ export default class Listings extends React.Component {
     render() {
         return (
             <div className="c-listings">
-                <h3 className="c-listings__title u-container" data-animate="listings-title">My Network:</h3>
+                <h3 className="c-listings__title u-container" data-animate="listings-title">
+                    My Network:
+                </h3>
                 <div className="c-listings__networks-list-container">
                     <ul className="c-listings__networks-list">
                         {networks.map((network, index) => (
                             <li className="c-listings__network-list-item" key={index}>
-                                <ListingCardNetwork
-                                    title={network.title}
-                                    image={network.image}
-                                    href={network.href}/>
+                                <ListingCardNetwork title={network.title} image={network.image} href={network.href} />
                             </li>
                         ))}
                     </ul>
                 </div>
-                <h3 className="c-listings__title u-container" data-animate="listings-title">Currently helping the world of E-Commerce at:</h3>
+                <h3 className="c-listings__title u-container" data-animate="listings-title">
+                    Currently helping the world of E-Commerce at:
+                </h3>
                 <ul>
                     <li>
-                        <ListingCardJob
-                            leftTitle="Divante"
-                            leftSubtitle="2017 - Frontend Developer"
-                            rightTitle="What I create"
-                            rightSubtitle={DivanteJobDescription}/>
+                        <ListingCardJob leftTitle="Divante" leftSubtitle="2017 - Frontend Developer" rightTitle="What I create" rightSubtitle={DivanteJobDescription} />
                     </li>
                 </ul>
-                <h3 className="c-listings__title u-container" data-animate="listings-title">Technologies I use and love:</h3>
+                <h3 className="c-listings__title u-container" data-animate="listings-title">
+                    Technologies I use and love:
+                </h3>
                 <div className="c-listings__skills-list-container">
                     <ul className="c-listings__skills-list">
                         {skills.map((skill, index) => (
                             <li key={index}>
-                                <ListingCardSkill
-                                    title={skill.title}
-                                    alt={skill.alt}
-                                    image={skill.image}/>
+                                <ListingCardSkill title={skill.title} alt={skill.alt} image={skill.image} />
                             </li>
                         ))}
                     </ul>
@@ -57,7 +53,7 @@ export default class Listings extends React.Component {
 
 const DivanteJobDescription = `Enchancing CMS experiences on a good day, creating Single Page Applications on the best days.
 
-Everything powered by combined solutions of VueJS and other Open Source powerhouses such as Symfony, Contentful or Pimcore.`
+Everything powered by combined solutions of VueJS and other Open Source powerhouses such as Symfony, Contentful or Pimcore.`;
 
 const networks = [
     {
@@ -97,5 +93,5 @@ const skills = [
         title: 'SASS/SCSS',
         alt: 'SASS SCSS',
         image: SASSLogo,
-    }
+    },
 ];

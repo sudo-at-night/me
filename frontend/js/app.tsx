@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Footer from '~/js/components/Footer';
 import ViewHome from '~/js/views/ViewHome';
 
@@ -13,12 +9,15 @@ export default class App extends React.Component {
             <div className="c-wrapper">
                 <Router>
                     <Switch>
-                        <Route path="/" render={({ match, location, history }) => {
-                            if (!match.isExact) {
-                                history.replace('/');
-                            }
-                            return <ViewHome/>;
-                        }}/>
+                        <Route
+                            path="/"
+                            render={({ match, location, history }) => {
+                                if (!match.isExact) {
+                                    history.replace('/');
+                                }
+                                return <ViewHome />;
+                            }}
+                        />
                     </Switch>
                 </Router>
                 <Footer></Footer>

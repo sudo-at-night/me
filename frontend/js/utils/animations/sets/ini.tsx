@@ -1,7 +1,7 @@
 import anime from 'animejs';
 import config from '~/js/utils/animations/config';
 
-export function iniAnimations () {
+export function iniAnimations() {
     const easing = config.easing;
     const elementsHeader = document.querySelectorAll('[data-animate="main-header"]');
     const elementsBio = document.querySelectorAll('[data-animate="bio"]');
@@ -48,7 +48,7 @@ export function iniAnimations () {
     });
     // Skills animation
     let skillsDelay = 800;
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver(entries => {
         if (!entries[0].isIntersecting) {
             skillsDelay = 0;
             return;
@@ -59,7 +59,7 @@ export function iniAnimations () {
             opacity: 1,
             translateX: 0,
             easing,
-            delay: anime.stagger(600, {start: skillsDelay}),
+            delay: anime.stagger(600, { start: skillsDelay }),
             duration: 1000,
         });
     });
@@ -74,7 +74,7 @@ export function iniAnimations () {
         opacity: 1,
         translateX: 0,
         easing,
-        delay: anime.stagger(600, {start: 400}),
+        delay: anime.stagger(600, { start: 400 }),
         duration: 1000,
     });
     // Job listings animation

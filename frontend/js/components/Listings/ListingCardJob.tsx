@@ -1,11 +1,11 @@
 import React from 'react';
 
 interface IProps {
-    leftTitle:     string,
-    leftSubtitle:  string,
-    rightTitle:    string,
-    rightSubtitle: string,
-};
+    leftTitle: string;
+    leftSubtitle: string;
+    rightTitle: string;
+    rightSubtitle: string;
+}
 
 export default class ListingCardJob extends React.Component<IProps> {
     render() {
