@@ -30,7 +30,7 @@ walk.async('js/', (path) => {
             path: pagePath,
             body: minify(metaHTML, minifyConfig),
         });
-        console.log(`Pushed ${pagePath}`);
+        console.log(`Found tags for path: ${pagePath}`);
     });
 }).then(() => {
     cleanup().then(() => saveFiles());
