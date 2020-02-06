@@ -3,6 +3,7 @@ const walk = require('walkdir');
 const minify = require('html-minifier').minify;
 const rimraf = require("rimraf");
 
+console.log('Building meta files..');
 
 const minifyConfig = {
     collapseWhitespace: true,
@@ -29,6 +30,7 @@ walk.async('js/', (path) => {
             path: pagePath,
             body: minify(metaHTML, minifyConfig),
         });
+        console.log(`Pushed ${pagePath}`);
     });
 }).then(() => {
     cleanup().then(() => saveFiles());
