@@ -3,16 +3,27 @@ networks:
         hosts:
             - ${SSH_USER}@${SSH_HOST}
 commands:
-    cleanup:
-        desc: Clear server's static files
-        run: docker-compose -f .cdocker/compose/me-nginx/compose.yml down && docker volume rm me && docker volume create me && docker-compose -f .cdocker/compose/me-nginx/compose.yml up -d
-    upload:
-        desc: Upload built files
+    cleanup-volume:
+        desc: Clear server's volumes
+        run: .cdocker/compose/me-compose/stop-containers.sh && docker volume rm me && docker volume create me && .cdocker/compose/me-compose/start-containers.sh
+    upload-static:
+        desc: Upload built static files
         upload:
             - src: ./dist
               dst: .cdocker/vlm/me/
         run: docker container create --name temp -v me:/data busybox && docker cp .cdocker/vlm/me/dist/. temp:/data/ && docker rm temp
+    upload-static:
+        desc: Upload built meta files
+        upload:
+            - src: ./meta
+              dst: .cdocker/vlm/me/
+        run: docker container create --name temp -v me-go-pages:/data busybox && docker cp .cdocker/vlm/me/meta/. temp:/data/ && docker rm temp
+    cleanup-files:
+        desc: Clear server's static files
+        run: rm -rf .cdocker/vlm/me/dist && rm -rf .cdocker/vlm/me/meta
 targets:
     deploy:
-        - cleanup
-        - upload
+        - cleanup-volume
+        - upload-static
+        - upload-meta
+        - cleanup-files

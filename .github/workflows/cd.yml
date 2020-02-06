@@ -34,11 +34,17 @@ jobs:
           cd frontend
           npm install
           npm run build
+          npm run build:meta
       - name: Archive static asset files
         uses: actions/upload-artifact@v1
         with:
           name: dist
           path: frontend/dist
+      - name: Archive meta files
+        uses: actions/upload-artifact@v1
+        with:
+          name: meta
+          path: frontend/meta
   deploy:
     name: Deploy
     needs: build
@@ -53,6 +59,10 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: dist
+      - name: Download pre-built meta files
+        uses: actions/download-artifact@v1
+        with:
+          name: meta
       - name: Setup SSH Key
         uses: webfactory/ssh-agent@v0.1.1
         with:

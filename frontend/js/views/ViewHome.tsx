@@ -4,6 +4,11 @@ import { iniAnimations } from '~/js/utils/animations';
 import WidgetLocation from '~/js/components/WidgetLocation';
 import Listings from '~/js/components/Listings';
 
+// META PATH: "/"
+// META TITLE: "Patryk Mazur | Software Engineer"
+// META LIST START
+// <meta name="description" content="I'm a software engineer currently living in Wrocław, Poland.">
+// META LIST END
 export default class ViewHome extends React.Component {
     componentDidMount() {
         iniAnimations();
