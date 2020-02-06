@@ -33,8 +33,7 @@ jobs:
         run: |
           cd frontend
           npm install
-          npm run build:meta
-          npm run build
+          npm run build:meta && npm run build
       - name: Archive static asset files
         uses: actions/upload-artifact@v1
         with:
