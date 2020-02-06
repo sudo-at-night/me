@@ -66,6 +66,7 @@ const getMetaList = (haystack) => {
 
 /* Save information */
 const cleanup = () => new Promise((resolve) => {
+    console.log('Cleaning up..')
     if (fs.existsSync('meta/')) {
         rimraf("meta/", () => {
             resolve();
@@ -76,6 +77,7 @@ const cleanup = () => new Promise((resolve) => {
 });
 
 const saveFiles = () => new Promise(() => {
+    console.log('Saving files..')
     const allFiles = metaFiles.map((file) => {
         return new Promise((resolveFile) => {
             const dirPath = `meta${file.path}`;
