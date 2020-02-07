@@ -9,33 +9,6 @@ const minifyConfig = {
     collapseWhitespace: true,
 };
 
-const metaFiles = [];
-
-walk.async('js/', (path) => {
-    fs.readFile(path, { encoding: 'utf8' }, (err, data) => {
-        if (!data) {
-            return
-        }
-        const pagePath = getMeta('PATH', data);
-        const pageTitle = getMeta('TITLE', data);
-        const pageMetaTags = getMetaList(data)
-        if (!pagePath || !pageTitle) {
-            return
-        }
-        const metaHTML = `
-            <title>${pageTitle}</title>
-            ${pageMetaTags}
-        `
-        metaFiles.push({
-            path: pagePath,
-            body: minify(metaHTML, minifyConfig),
-        });
-        console.log(`Found tags for path: ${pagePath}`);
-    });
-}).then(() => {
-    cleanup().then(() => saveFiles());
-});
-
 /* Retreive information */
 const getMeta = (metaName, haystack) => {
     const searchString = `// META ${metaName}: "`;
@@ -76,9 +49,9 @@ const cleanup = () => new Promise((resolve) => {
     }
 });
 
-const saveFiles = () => new Promise(() => {
+const saveFiles = (filesList) => new Promise(() => {
     console.log('Saving files..')
-    const allFiles = metaFiles.map((file) => {
+    const allFiles = filesList.map((file) => {
         return new Promise((resolveFile) => {
             const dirPath = `meta${file.path}`;
             const filePath = `meta${file.path}meta`;
@@ -90,3 +63,32 @@ const saveFiles = () => new Promise(() => {
     )});
     Promise.all(allFiles);
 });
+
+const metaFiles = [];
+
+walk.sync('js/', (path) => {
+    if (!path.includes('.tsx')) {
+        return;
+    }
+    const data = fs.readFileSync(path, { encoding: 'utf8' });
+    if (!data) {
+        return;
+    }
+    const pagePath = getMeta('PATH', data);
+    const pageTitle = getMeta('TITLE', data);
+    const pageMetaTags = getMetaList(data)
+    if (!pagePath || !pageTitle) {
+        return;
+    }
+    const metaHTML = `
+        <title>${pageTitle}</title>
+        ${pageMetaTags}
+    `
+    metaFiles.push({
+        path: pagePath,
+        body: minify(metaHTML, minifyConfig),
+    });
+    console.log(`Found tags for path: ${pagePath}`);
+});
+
+cleanup().then(() => saveFiles(metaFiles));
