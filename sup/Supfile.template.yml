@@ -12,7 +12,7 @@ commands:
             - src: ./dist
               dst: .cdocker/vlm/me/
         run: docker container create --name temp -v me:/data busybox && docker cp .cdocker/vlm/me/dist/. temp:/data/ && docker rm temp
-    upload-static:
+    upload-meta:
         desc: Upload built meta files
         upload:
             - src: ./meta
