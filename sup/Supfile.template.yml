@@ -32,7 +32,10 @@ commands:
         run: rm -rf .cdocker/vlm/me/dist && rm -rf .cdocker/vlm/me/meta
 targets:
     deploy:
-        - cleanup-volume
+        - stop-containers
+        - cleanup-volume-me
+        - cleanup-volume-me-go-pages
+        - start-containers
         - upload-static
         - upload-meta
         - cleanup-files
