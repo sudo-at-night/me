@@ -20,13 +20,13 @@ commands:
         upload:
             - src: ./dist
               dst: .cdocker/vlm/me/
-        run: cp .cdocker/vlm/me/dist/index.*.html .cdocker/vlm/me/meta/ && docker container create --name temp -v me:/data busybox && docker cp .cdocker/vlm/me/dist/. temp:/data/ && docker rm temp
+        run: docker container create --name temp -v me:/data busybox && docker cp .cdocker/vlm/me/dist/. temp:/data/ && docker rm temp
     upload-meta:
         desc: Upload built meta files
         upload:
             - src: ./meta
               dst: .cdocker/vlm/me/
-        run: docker container create --name temp -v me-go-pages:/data busybox && docker cp .cdocker/vlm/me/meta/. temp:/data/ && docker rm temp
+        run: cp .cdocker/vlm/me/dist/index.*.html .cdocker/vlm/me/meta/ && docker container create --name temp -v me-go-pages:/data busybox && docker cp .cdocker/vlm/me/meta/. temp:/data/ && docker rm temp
     cleanup-files:
         desc: Clear server's static files
         run: rm -rf .cdocker/vlm/me/dist && rm -rf .cdocker/vlm/me/meta
