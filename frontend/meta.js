@@ -33,7 +33,7 @@ const getMetaList = (haystack) => {
 
     const data = haystack
         .substring(metaStartIndex + (startSearchString.length), metaEndIndex)
-        .replace(/\/\//g, '');
+        .replace(/(\/\/)\W/g, '');
     return data;
 };
 
