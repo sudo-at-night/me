@@ -8,6 +8,17 @@ import Listings from '~/js/components/Listings';
 // META TITLE: "Patryk Mazur | Software Engineer"
 // META LIST START
 // <meta name="description" content="I'm a software engineer currently living in Wrocław, Poland.">
+// <meta name="title" content="Patryk Mazur | Software Engineer">
+// <meta property="og:type" content="website">
+// <meta property="og:url" content="https://sudo-at-night.com/">
+// <meta property="og:title" content="Patryk Mazur | Software Engineer">
+// <meta property="og:description" content="I'm a software engineer currently living in Wrocław, Poland.">
+// <meta property="og:image" content="https://sudo-at-night.com/meta/meta-homepage.png">
+// <meta property="twitter:card" content="summary_large_image">
+// <meta property="twitter:url" content="https://sudo-at-night.com/">
+// <meta property="twitter:title" content="Patryk Mazur | Software Engineer">
+// <meta property="twitter:description" content="I'm a software engineer currently living in Wrocław, Poland.">
+// <meta property="twitter:image" content="https://sudo-at-night.com/meta/meta-homepage.png"></meta>
 // META LIST END
 export default class ViewHome extends React.Component {
     componentDidMount() {
